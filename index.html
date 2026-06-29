@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arvin Björkgren</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       EDIT YOUR INFO HERE — all personal content is at the top
+       ============================================================ */
+
+    /* Colors & fonts — change these to restyle the whole site */
+    :root {
+      --accent:       #1a6b4a;   /* main green */
+      --accent-light: #e8f4ef;   /* background tint */
+      --text:         #1c1c1c;
+      --text-muted:   #6b7280;
+      --border:       #e5e7eb;
+      --bg:           #fafaf8;
+      --white:        #ffffff;
+      --serif:        'DM Serif Display', Georgia, serif;
+      --sans:         'Inter', system-ui, sans-serif;
+      --max-w:        740px;
+    }
+
+    /* ============================================================
+       BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 400;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ============================================================
+       LAYOUT
+       ============================================================ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    /* ============================================================
+       NAV
+       ============================================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      padding: 5rem 0 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #155a3d; text-decoration: none; color: #fff; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* ============================================================
+       ABOUT
+       ============================================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 560px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .about-block h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .about-block p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       PROJECTS
+       ============================================================ */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.5rem;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(26,107,74,0.08);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .project-status {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .status-ongoing  { background: #e8f4ef; color: #1a6b4a; }
+    .status-complete { background: #f0f0f0; color: #555; }
+    .status-planned  { background: #fef9e8; color: #92690a; }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .project-link {
+      font-size: 0.82rem;
+      color: var(--accent);
+      margin-top: 0.8rem;
+      display: inline-block;
+    }
+
+    /* ============================================================
+       CV / TIMELINE
+       ============================================================ */
+    .cv-section { margin-bottom: 2.5rem; }
+
+    .cv-section-title {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cv-entry {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 0.75rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 480px) {
+      .cv-entry { grid-template-columns: 1fr; }
+    }
+
+    .cv-year {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding-top: 0.1rem;
+    }
+
+    .cv-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .cv-subtitle {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       SKILLS
+       ============================================================ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .skill-item {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       CONTACT
+       ============================================================ */
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-row svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV  — edit links to match your sections
+     ============================================================ -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Arvin Björkgren</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO  — edit your tagline and bio here
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="container">
+    <p class="hero-eyebrow">Medical student · Researcher · Aspiring neurosurgeon</p>
+    <h1>Medicine, science,<br>and the <em>human brain.</em></h1>
+    <p class="hero-bio">
+      I'm Arvin — a medical student at Umeå University with a deep interest in
+      neurosurgery and translational oncology research. I combine clinical training
+      with computational methods to work on problems at the intersection of medicine
+      and science.
+    </p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/arvin-bjorkgren/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-secondary" href="https://github.com/Ardvino" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT  — edit your background and interests
+     ============================================================ -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div class="about-block">
+        <h3>Background</h3>
+        <p>
+          I study medicine at Umeå University in northern Sweden. My clinical
+          interest centres on neurosurgery — a field I'm drawn to for its
+          intellectual complexity, the precision it demands, and the profound
+          connection between brain anatomy and human personality.
+        </p>
+      </div>
+      <div class="about-block">
+        <h3>Research</h3>
+        <p>
+          I'm currently working on translational oncology research focused on
+          pancreatic cancer. The work involves survival analysis, biomarker
+          characterisation, and computational approaches — aimed at a peer-reviewed
+          publication.
+        </p>
+      </div>
+      <div class="about-block">
+        <h3>Interests</h3>
+        <p>
+          Neuroanatomy (especially Rhoton's work), surgical technique, Python
+          for medical data analysis, and building a publication record while
+          still in medical school.
+        </p>
+      </div>
+      <div class="about-block">
+        <h3>Location</h3>
+        <p>
+          Based in Umeå, Sweden. Training at Norrlands universitetssjukhus (NUS)
+          and affiliated with Umeå University's medical programme.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS  — edit or add cards below
+     Each card: title, status, description, tags, optional link
+     Statuses: status-ongoing | status-complete | status-planned
+     ============================================================ -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Projects</p>
+    <div class="projects-list">
+
+      <!-- PROJECT 1 -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-title">Translational Pancreatic Cancer Research</span>
+          <span class="project-status status-ongoing">Ongoing</span>
+        </div>
+        <p class="project-desc">
+          Investigating biomarkers and survival outcomes in pancreatic ductal
+          adenocarcinoma (PDAC). The project combines clinical data with
+          computational survival analysis, with the goal of a peer-reviewed
+          publication as first or co-author.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Oncology</span>
+          <span class="tag">Survival analysis</span>
+          <span class="tag">Python</span>
+          <span class="tag">Translational research</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-title">Neurosurgery Literature Review</span>
+          <span class="project-status status-planned">Planned</span>
+        </div>
+        <p class="project-desc">
+          A student-level review or case report in neurosurgery, aimed at
+          beginning a specialty-relevant publication record ahead of clinical
+          rotations and department outreach.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Neurosurgery</span>
+          <span class="tag">Literature review</span>
+          <span class="tag">Academic writing</span>
+        </div>
+      </div>
+
+      <!-- ADD MORE PROJECTS BELOW by copying a project-card block -->
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CV  — edit your education and experience entries
+     ============================================================ -->
+<section id="cv">
+  <div class="container">
+    <p class="section-label">CV</p>
+
+    <!-- EDUCATION -->
+    <div class="cv-section">
+      <p class="cv-section-title">Education</p>
+
+      <div class="cv-entry">
+        <span class="cv-year">2019 – present</span>
+        <div>
+          <p class="cv-title">Medicine (Läkarprogrammet)</p>
+          <p class="cv-subtitle">Umeå University — Currently in T11 (research semester)</p>
+        </div>
+      </div>
+
+      <!-- Add more education entries here -->
+    </div>
+
+    <!-- RESEARCH -->
+    <div class="cv-section">
+      <p class="cv-section-title">Research experience</p>
+
+      <div class="cv-entry">
+        <span class="cv-year">2024 – present</span>
+        <div>
+          <p class="cv-title">Translational Oncology — Pancreatic Cancer</p>
+          <p class="cv-subtitle">Umeå University / NUS — Research semesters T10–T11</p>
+        </div>
+      </div>
+
+      <!-- Add more research entries here -->
+    </div>
+
+    <!-- CLINICAL -->
+    <div class="cv-section">
+      <p class="cv-section-title">Clinical training</p>
+
+      <div class="cv-entry">
+        <span class="cv-year">Ongoing</span>
+        <div>
+          <p class="cv-title">Clerkships — Norrlands universitetssjukhus</p>
+          <p class="cv-subtitle">Surgery, internal medicine, and specialised rotations</p>
+        </div>
+      </div>
+
+      <!-- Add more clinical entries here -->
+    </div>
+
+    <!-- SKILLS -->
+    <div class="cv-section">
+      <p class="cv-section-title">Skills</p>
+      <div class="skills-grid">
+        <span class="skill-item"><span class="skill-dot"></span>Python</span>
+        <span class="skill-item"><span class="skill-dot"></span>Survival analysis</span>
+        <span class="skill-item"><span class="skill-dot"></span>Data analysis</span>
+        <span class="skill-item"><span class="skill-dot"></span>Academic writing</span>
+        <span class="skill-item"><span class="skill-dot"></span>Neuroanatomy</span>
+        <span class="skill-item"><span class="skill-dot"></span>Clinical medicine</span>
+        <span class="skill-item"><span class="skill-dot"></span>Swedish (native)</span>
+        <span class="skill-item"><span class="skill-dot"></span>English (fluent)</span>
+        <!-- Add more skills as needed -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT  — edit your email and links
+     ============================================================ -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:1.75rem; max-width:480px;">
+      Feel free to reach out about research collaborations, neurosurgery,
+      or anything else.
+    </p>
+    <div class="contact-links">
+
+      <!-- EMAIL — replace with your actual address -->
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="2,4 12,13 22,4"/>
+        </svg>
+        <a href="mailto:arvin.bjorkgren@gmail.com">arvin.bjorkgren@gmail.com</a>
+      </div>
+
+      <!-- LINKEDIN -->
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="4"/>
+          <line x1="8" y1="11" x2="8" y2="16"/>
+          <line x1="8" y1="8" x2="8" y2="8.5"/>
+          <path d="M12 16v-5m4 5v-3a2 2 0 0 0-4 0"/>
+        </svg>
+        <a href="https://www.linkedin.com/in/arvin-bjorkgren/" target="_blank" rel="noopener">linkedin.com/in/arvin-bjorkgren</a>
+      </div>
+
+      <!-- GITHUB -->
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77a5.07 5.07 0 0 0-.09-3.77S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77 5.44 5.44 0 0 0 3.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+        <a href="https://github.com/Ardvino" target="_blank" rel="noopener">github.com/Ardvino</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Arvin Björkgren · Umeå, Sweden · <a href="#top">Back to top</a></p>
+</footer>
+
+</body>
+</html>
