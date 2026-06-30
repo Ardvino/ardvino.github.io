@@ -6,7 +6,7 @@
   <title>Arvin Björkgren</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <style>
     /* ============================================================
        EDIT YOUR INFO HERE — all personal content is at the top
@@ -14,15 +14,14 @@
 
     /* Colors & fonts — change these to restyle the whole site */
     :root {
-      --accent:       #1a6b4a;   /* main green */
-      --accent-light: #e8f4ef;   /* background tint */
-      --text:         #1c1c1c;
-      --text-muted:   #6b7280;
-      --border:       #e5e7eb;
-      --bg:           #fafaf8;
-      --white:        #ffffff;
-      --serif:        'DM Serif Display', Georgia, serif;
-      --sans:         'Inter', system-ui, sans-serif;
+      --accent:       #60a5fa;   /* cool blue */
+      --accent-light: #1e2d45;   /* dark blue tint */
+      --text:         #e6edf3;
+      --text-muted:   #8b949e;
+      --border:       #21262d;
+      --bg:           #0d1117;
+      --white:        #161b22;   /* card background */
+      --font:         'Plus Jakarta Sans', system-ui, sans-serif;
       --max-w:        740px;
     }
 
@@ -34,7 +33,7 @@
     html { font-size: 16px; scroll-behavior: smooth; }
 
     body {
-      font-family: var(--sans);
+      font-family: var(--font);
       font-weight: 400;
       color: var(--text);
       background: var(--bg);
@@ -60,7 +59,7 @@
     section:last-child { border-bottom: none; }
 
     .section-label {
-      font-family: var(--sans);
+      font-family: var(--font);
       font-size: 0.7rem;
       font-weight: 500;
       letter-spacing: 0.12em;
@@ -75,7 +74,7 @@
     nav {
       position: sticky;
       top: 0;
-      background: rgba(250,250,248,0.92);
+      background: rgba(13, 17, 23, 0.92);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
       z-index: 100;
@@ -92,7 +91,7 @@
     }
 
     .nav-name {
-      font-family: var(--serif);
+      font-family: var(--font);
       font-size: 1.05rem;
       color: var(--text);
     }
@@ -119,8 +118,48 @@
        HERO
        ============================================================ */
     .hero {
+      position: relative;
       padding: 5rem 0 4rem;
       border-bottom: 1px solid var(--border);
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 17, 23, 0.78);
+    }
+
+    .hero .container {
+      position: relative;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+    }
+
+    .hero-text { flex: 1; min-width: 0; }
+
+    .profile-img {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid rgba(96, 165, 250, 0.45);
+      box-shadow:
+        0 0 0 7px rgba(96, 165, 250, 0.08),
+        0 16px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    @media (max-width: 560px) {
+      .hero-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .profile-img { width: 120px; height: 120px; }
     }
 
     .hero-eyebrow {
@@ -131,17 +170,25 @@
     }
 
     .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 3.4rem);
-      font-weight: 400;
+      font-family: var(--font);
+      font-size: clamp(2.2rem, 5vw, 3.1rem);
+      font-weight: 600;
       line-height: 1.15;
       color: var(--text);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .hero h1 em {
       font-style: italic;
       color: var(--accent);
+    }
+
+    .hero-attr {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.07em;
+      margin-bottom: 1.75rem;
     }
 
     .hero-bio {
@@ -175,7 +222,7 @@
       background: var(--accent);
       color: #fff;
     }
-    .btn-primary:hover { background: #155a3d; text-decoration: none; color: #fff; }
+    .btn-primary:hover { background: #3b82f6; text-decoration: none; color: #fff; }
 
     .btn-secondary {
       background: transparent;
@@ -196,9 +243,9 @@
     @media (max-width: 560px) { .about-grid { grid-template-columns: 1fr; } }
 
     .about-block h3 {
-      font-family: var(--serif);
-      font-size: 1.15rem;
-      font-weight: 400;
+      font-family: var(--font);
+      font-size: 1.05rem;
+      font-weight: 600;
       margin-bottom: 0.6rem;
       color: var(--text);
     }
@@ -219,7 +266,7 @@
     }
 
     .project-card {
-      background: var(--white);
+      background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.4rem 1.5rem;
@@ -228,7 +275,7 @@
 
     .project-card:hover {
       border-color: var(--accent);
-      box-shadow: 0 2px 12px rgba(26,107,74,0.08);
+      box-shadow: 0 2px 12px rgba(96, 165, 250, 0.1);
     }
 
     .project-header {
@@ -240,9 +287,9 @@
     }
 
     .project-title {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 400;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 600;
       color: var(--text);
     }
 
@@ -255,9 +302,9 @@
       flex-shrink: 0;
     }
 
-    .status-ongoing  { background: #e8f4ef; color: #1a6b4a; }
-    .status-complete { background: #f0f0f0; color: #555; }
-    .status-planned  { background: #fef9e8; color: #92690a; }
+    .status-ongoing  { background: #0d2818; color: #4ade80; }
+    .status-complete { background: #1c1c1c; color: #9ca3af; }
+    .status-planned  { background: #2a1f0a; color: #fbbf24; }
 
     .project-desc {
       font-size: 0.88rem;
@@ -415,18 +462,25 @@
      ============================================================ -->
 <section class="hero" id="top">
   <div class="container">
-    <p class="hero-eyebrow">Medical student · Researcher · Aspiring neurosurgeon</p>
-    <h1>Medicine, science,<br>and the <em>human brain.</em></h1>
-    <p class="hero-bio">
-      I'm Arvin — a medical student at Umeå University with a deep interest in
-      neurosurgery and translational oncology research. I combine clinical training
-      with computational methods to work on problems at the intersection of medicine
-      and science.
-    </p>
-    <div class="hero-links">
-      <a class="btn btn-primary" href="#contact">Get in touch</a>
-      <a class="btn btn-secondary" href="https://www.linkedin.com/in/arvin-bjorkgren/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn btn-secondary" href="https://github.com/Ardvino" target="_blank" rel="noopener">GitHub</a>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">MD candidate · Researcher · Aspiring surgeon</p>
+        <h1><em>Excellence</em> is not an act, but a habit.</h1>
+        <p class="hero-attr">— Aristotle</p>
+        <p class="hero-bio"> 
+          I'm a medical student at Umeå University with a keen interest in
+          surgery and translational oncology research. I enjoy exploring
+          the intersection of clinical practice, research, and data analysis.
+
+        </p>
+        </p>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/arvin-bjorkgren/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-secondary" href="https://github.com/Ardvino" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <img src="profile.png" alt="Arvin Björkgren" class="profile-img" />
     </div>
   </div>
 </section>
@@ -444,7 +498,8 @@
           I study medicine at Umeå University in northern Sweden. My clinical
           interest centres on neurosurgery — a field I'm drawn to for its
           intellectual complexity, the precision it demands, and the profound
-          connection between brain anatomy and human personality.
+          connection between brain anatomy and human personality. <br><br>
+       
         </p>
       </div>
       <div class="about-block">
@@ -459,9 +514,9 @@
       <div class="about-block">
         <h3>Interests</h3>
         <p>
-          Neuroanatomy (especially Rhoton's work), surgical technique, Python
-          for medical data analysis, and building a publication record while
-          still in medical school.
+          I serve as an instructor of basic surgical skills for medical students in Umeå.
+          I'm equally drawn to the computational side of medicine, using Python to analyze clinical and biomedical data.
+          Outside of medicine, I train in martial arts, which has shaped my approach to discipline, precision and performance under pressure.
         </p>
       </div>
       <div class="about-block">
@@ -488,42 +543,56 @@
       <!-- PROJECT 1 -->
       <div class="project-card">
         <div class="project-header">
-          <span class="project-title">Translational Pancreatic Cancer Research</span>
+          <span class="project-title">Metabolomic Profiling in Pancreatic Cancer</span>
           <span class="project-status status-ongoing">Ongoing</span>
         </div>
         <p class="project-desc">
-          Investigating biomarkers and survival outcomes in pancreatic ductal
-          adenocarcinoma (PDAC). The project combines clinical data with
-          computational survival analysis, with the goal of a peer-reviewed
-          publication as first or co-author.
+          Using blood plasma analysis to search for molecular signatures that can distinguish
+          pancreatic cancer from other diagnoses — with the goal of enabling earlier detection.
         </p>
         <div class="project-tags">
-          <span class="tag">Oncology</span>
-          <span class="tag">Survival analysis</span>
+          <span class="tag">Metabolomics</span>
+          <span class="tag">Biomarker Discovery</span>
           <span class="tag">Python</span>
-          <span class="tag">Translational research</span>
+          <span class="tag">Early Detection</span>
         </div>
       </div>
 
       <!-- PROJECT 2 -->
       <div class="project-card">
         <div class="project-header">
-          <span class="project-title">Neurosurgery Literature Review</span>
-          <span class="project-status status-planned">Planned</span>
+          <span class="project-title">Pre-diagnostic Biomarker Signatures — PREDICT Cohort</span>
+          <span class="project-status status-ongoing">Ongoing</span>
         </div>
         <p class="project-desc">
-          A student-level review or case report in neurosurgery, aimed at
-          beginning a specialty-relevant publication record ahead of clinical
-          rotations and department outreach.
+          Analysing blood samples collected years before a cancer diagnosis to identify
+          early warning signals for pancreatic cancer, using a large population-based biobank.
         </p>
         <div class="project-tags">
-          <span class="tag">Neurosurgery</span>
-          <span class="tag">Literature review</span>
-          <span class="tag">Academic writing</span>
+          <span class="tag">Proteomics</span>
+          <span class="tag">Metabolomics</span>
+          <span class="tag">Early Detection</span>
+          <span class="tag">Population Cohort</span>
         </div>
       </div>
 
-      <!-- ADD MORE PROJECTS BELOW by copying a project-card block -->
+      <!-- PROJECT 3 -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-title">Tumour Markers and Survival After Chemotherapy</span>
+          <span class="project-status status-ongoing">Ongoing</span>
+        </div>
+        <p class="project-desc">
+          Investigating whether the expression of specific proteins in pancreatic tumour tissue
+          can predict survival in patients who received chemotherapy before surgery.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Digital Pathology</span>
+          <span class="tag">Survival Analysis</span>
+          <span class="tag">Immunohistochemistry</span>
+          <span class="tag">Prognostics</span>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -556,29 +625,51 @@
       <p class="cv-section-title">Research experience</p>
 
       <div class="cv-entry">
-        <span class="cv-year">2024 – present</span>
+        <span class="cv-year">2025 – present</span>
         <div>
-          <p class="cv-title">Translational Oncology — Pancreatic Cancer</p>
-          <p class="cv-subtitle">Umeå University / NUS — Research semesters T10–T11</p>
+          <p class="cv-title">Research Assistant — Translational Oncology</p>
+          <p class="cv-subtitle">Umeå University · M. Sund laboratory, Dept. of Diagnostics and Intervention</p>
         </div>
       </div>
 
-      <!-- Add more research entries here -->
+      <div class="cv-entry">
+        <span class="cv-year">2023 – 2025</span>
+        <div>
+          <p class="cv-title">Undergraduate Research Fellow — Forskaraspiranterna</p>
+          <p class="cv-subtitle">Umeå University · P. Wanrooij lab (2023–2024) · M. Sund lab (2025)</p>
+        </div>
+      </div>
+
     </div>
 
     <!-- CLINICAL -->
     <div class="cv-section">
-      <p class="cv-section-title">Clinical training</p>
+      <p class="cv-section-title">Clinical experience</p>
 
       <div class="cv-entry">
-        <span class="cv-year">Ongoing</span>
+        <span class="cv-year">2025 – 2026</span>
         <div>
-          <p class="cv-title">Clerkships — Norrlands universitetssjukhus</p>
-          <p class="cv-subtitle">Surgery, internal medicine, and specialised rotations</p>
+          <p class="cv-title">Physician Assistant — Cardiology Ward</p>
+          <p class="cv-subtitle">Department of Internal Medicine, Örnsköldsvik</p>
         </div>
       </div>
 
-      <!-- Add more clinical entries here -->
+      <div class="cv-entry">
+        <span class="cv-year">2024 – 2025</span>
+        <div>
+          <p class="cv-title">Nursing Assistant — Pulmonary & Renal Medicine</p>
+          <p class="cv-subtitle">Region Västerbotten · SPEVA specialist ward</p>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <span class="cv-year">2022 – 2023</span>
+        <div>
+          <p class="cv-title">Geriatric Nursing Assistant</p>
+          <p class="cv-subtitle">Umeå Kommun · Solbacken — Dementia care</p>
+        </div>
+      </div>
+
     </div>
 
     <!-- SKILLS -->
@@ -586,14 +677,19 @@
       <p class="cv-section-title">Skills</p>
       <div class="skills-grid">
         <span class="skill-item"><span class="skill-dot"></span>Python</span>
-        <span class="skill-item"><span class="skill-dot"></span>Survival analysis</span>
-        <span class="skill-item"><span class="skill-dot"></span>Data analysis</span>
-        <span class="skill-item"><span class="skill-dot"></span>Academic writing</span>
-        <span class="skill-item"><span class="skill-dot"></span>Neuroanatomy</span>
-        <span class="skill-item"><span class="skill-dot"></span>Clinical medicine</span>
+        <span class="skill-item"><span class="skill-dot"></span>Bioinformatics</span>
+        <span class="skill-item"><span class="skill-dot"></span>Data Analysis</span>
+        <span class="skill-item"><span class="skill-dot"></span>Multivariate Statistics</span>
+        <span class="skill-item"><span class="skill-dot"></span>Metabolomic Profiling</span>
+        <span class="skill-item"><span class="skill-dot"></span>Digital Pathology</span>
+        <span class="skill-item"><span class="skill-dot"></span>Translational Medicine</span>
+        <span class="skill-item"><span class="skill-dot"></span>Biomedical Research</span>
+        <span class="skill-item"><span class="skill-dot"></span>Clinical Medicine</span>
+        <span class="skill-item"><span class="skill-dot"></span>Laboratory Skills</span>
+        <span class="skill-item"><span class="skill-dot"></span>Academic Writing</span>
+        <span class="skill-item"><span class="skill-dot"></span>Leadership</span>
         <span class="skill-item"><span class="skill-dot"></span>Swedish (native)</span>
         <span class="skill-item"><span class="skill-dot"></span>English (fluent)</span>
-        <!-- Add more skills as needed -->
       </div>
     </div>
 
@@ -607,7 +703,7 @@
   <div class="container">
     <p class="section-label">Contact</p>
     <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:1.75rem; max-width:480px;">
-      Feel free to reach out about research collaborations, neurosurgery,
+      Feel free to reach out about research collaborations, medicine,
       or anything else.
     </p>
     <div class="contact-links">
