@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arvin Björkgren</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     NAV  — edit links to match your sections
+     ============================================================ -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Arvin Björkgren</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Back to home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO  — project title and summary
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Research Project · <span class="project-status status-ongoing">Ongoing</span></p>
+        <h1>Tumour Markers and Survival <em>After Chemotherapy</em></h1>
+        <p class="hero-attr">Digital Pathology · Survival Analysis</p>
+        <p class="hero-bio">
+          Investigating whether the expression of specific proteins in pancreatic
+          tumour tissue can predict survival in patients who received chemotherapy
+          before surgery, using immunohistochemistry-scored tissue samples.
+        </p>
+        <div class="project-tags" style="margin-bottom: 2rem;">
+          <span class="tag">Digital Pathology</span>
+          <span class="tag">Survival Analysis</span>
+          <span class="tag">Immunohistochemistry</span>
+          <span class="tag">Prognostics</span>
+        </div>
+        <div class="hero-links">
+          <a class="btn btn-secondary" href="index.html">Back to home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     OVERVIEW  — headline stats (placeholders until analysis runs)
+     ============================================================ -->
+<section id="overview">
+  <div class="container">
+    <p class="section-label">Overview</p>
+    <p style="font-size:0.9rem; color:var(--text-muted); max-width:560px;">
+      Key figures below are placeholders and will be populated once the
+      cohort is finalised and the models are fit.
+    </p>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">—</div>
+        <div class="stat-label">Patients (n)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">—</div>
+        <div class="stat-label">Median survival</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">—</div>
+        <div class="stat-label">IHC-positive rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">—</div>
+        <div class="stat-label">Log-rank p-value</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESULTS  — Kaplan-Meier plot + Cox regression table
+     ============================================================ -->
+<section id="results">
+  <div class="container">
+    <p class="section-label">Results</p>
+
+    <div class="plot-placeholder">
+      <strong>Kaplan-Meier survival curve</strong>
+      <span>Survival by protein expression (high vs. low) — plot pending final IHC scoring</span>
+    </div>
+
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Covariate</th>
+          <th>Hazard ratio</th>
+          <th>95% CI</th>
+          <th>p-value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="muted">Protein expression (high vs. low)</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+        </tr>
+        <tr>
+          <td class="muted">Neoadjuvant chemotherapy response</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+        </tr>
+        <tr>
+          <td class="muted">Tumour stage</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+        </tr>
+        <tr>
+          <td class="muted">Age at surgery</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================
+     METHODOLOGY
+     ============================================================ -->
+<section id="methodology">
+  <div class="container">
+    <p class="section-label">Methodology</p>
+    <div class="about-grid">
+      <div class="about-block">
+        <h3>Data</h3>
+        <p>
+          Pancreatic tumour tissue samples from patients who received
+          chemotherapy before surgery, scored for protein expression by
+          immunohistochemistry alongside clinical follow-up and survival data.
+        </p>
+      </div>
+      <div class="about-block">
+        <h3>Modelling</h3>
+        <p>
+          Kaplan-Meier estimation to compare survival between high- and
+          low-expression groups, and Cox proportional hazards regression to
+          adjust for chemotherapy response, tumour stage, and age.
+        </p>
+      </div>
+      <div class="about-block">
+        <h3>Tools</h3>
+        <p>
+          Digital pathology software for IHC scoring, with statistical
+          analysis in Python, aimed at a peer-reviewed publication.
+        </p>
+      </div>
+      <div class="about-block">
+        <h3>Status</h3>
+        <p>
+          Ongoing — this page will be updated with figures and results as
+          IHC scoring and survival analysis are completed.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Arvin Björkgren · Umeå, Sweden · <a href="#top">Back to top</a></p>
+</footer>
+
+</body>
+</html>

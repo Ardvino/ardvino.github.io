@@ -7,439 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
-  <style>
-    /* ============================================================
-       EDIT YOUR INFO HERE — all personal content is at the top
-       ============================================================ */
-
-    /* Colors & fonts — change these to restyle the whole site */
-    :root {
-      --accent:       #60a5fa;   /* cool blue */
-      --accent-light: #1e2d45;   /* dark blue tint */
-      --text:         #e6edf3;
-      --text-muted:   #8b949e;
-      --border:       #21262d;
-      --bg:           #0d1117;
-      --white:        #161b22;   /* card background */
-      --font:         'Plus Jakarta Sans', system-ui, sans-serif;
-      --max-w:        740px;
-    }
-
-    /* ============================================================
-       BASE
-       ============================================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { font-size: 16px; scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font);
-      font-weight: 400;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.7;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* ============================================================
-       LAYOUT
-       ============================================================ */
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    section {
-      padding: 4rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    section:last-child { border-bottom: none; }
-
-    .section-label {
-      font-family: var(--font);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2rem;
-    }
-
-    /* ============================================================
-       NAV
-       ============================================================ */
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(13, 17, 23, 0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-    }
-
-    .nav-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-
-    .nav-name {
-      font-family: var(--font);
-      font-size: 1.05rem;
-      color: var(--text);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    /* ============================================================
-       HERO
-       ============================================================ */
-    .hero {
-      position: relative;
-      padding: 5rem 0 4rem;
-      border-bottom: 1px solid var(--border);
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(13, 17, 23, 0.78);
-    }
-
-    .hero .container {
-      position: relative;
-    }
-
-    .hero-inner {
-      display: flex;
-      align-items: center;
-      gap: 3.5rem;
-    }
-
-    .hero-text { flex: 1; min-width: 0; }
-
-    .profile-img {
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      border: 3px solid rgba(96, 165, 250, 0.45);
-      box-shadow:
-        0 0 0 7px rgba(96, 165, 250, 0.08),
-        0 16px 40px rgba(0, 0, 0, 0.55);
-    }
-
-    @media (max-width: 560px) {
-      .hero-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-      .profile-img { display: none; }
-      .nav-links { display: none; }
-    }
-
-    .hero-eyebrow {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-      letter-spacing: 0.01em;
-    }
-
-    .hero h1 {
-      font-family: var(--font);
-      font-size: clamp(2.2rem, 5vw, 3.1rem);
-      font-weight: 600;
-      line-height: 1.15;
-      color: var(--text);
-      margin-bottom: 0.4rem;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-attr {
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      letter-spacing: 0.07em;
-      margin-bottom: 1.75rem;
-    }
-
-    .hero-bio {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 560px;
-      line-height: 1.75;
-      margin-bottom: 2rem;
-    }
-
-    .hero-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.55rem 1.1rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all 0.15s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-    .btn-primary:hover { background: #3b82f6; text-decoration: none; color: #fff; }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-    }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-
-    /* ============================================================
-       ABOUT
-       ============================================================ */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-
-    @media (max-width: 560px) { .about-grid { grid-template-columns: 1fr; } }
-
-    .about-block h3 {
-      font-family: var(--font);
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-      color: var(--text);
-    }
-
-    .about-block p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    /* ============================================================
-       PROJECTS
-       ============================================================ */
-    .projects-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .project-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem 1.5rem;
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-
-    .project-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 2px 12px rgba(96, 165, 250, 0.1);
-    }
-
-    .project-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-title {
-      font-family: var(--font);
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .project-status {
-      font-size: 0.72rem;
-      font-weight: 500;
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .status-ongoing  { background: #0d2818; color: #4ade80; }
-    .status-complete { background: #1c1c1c; color: #9ca3af; }
-    .status-planned  { background: #2a1f0a; color: #fbbf24; }
-
-    .project-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 0.9rem;
-      line-height: 1.65;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .tag {
-      font-size: 0.72rem;
-      font-weight: 500;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-
-    .project-link {
-      font-size: 0.82rem;
-      color: var(--accent);
-      margin-top: 0.8rem;
-      display: inline-block;
-    }
-
-    /* ============================================================
-       CV / TIMELINE
-       ============================================================ */
-    .cv-section { margin-bottom: 2.5rem; }
-
-    .cv-section-title {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .cv-entry {
-      display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 0.75rem 1.25rem;
-      margin-bottom: 1.25rem;
-    }
-
-    @media (max-width: 480px) {
-      .cv-entry { grid-template-columns: 1fr; }
-    }
-
-    .cv-year {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      padding-top: 0.1rem;
-    }
-
-    .cv-title {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 0.15rem;
-    }
-
-    .cv-subtitle {
-      font-size: 0.83rem;
-      color: var(--text-muted);
-    }
-
-    /* ============================================================
-       SKILLS
-       ============================================================ */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 0.75rem;
-    }
-
-    .skill-item {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .skill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    /* ============================================================
-       CONTACT
-       ============================================================ */
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .contact-row svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--accent);
-      flex-shrink: 0;
-    }
-
-    /* ============================================================
-       FOOTER
-       ============================================================ */
-    footer {
-      text-align: center;
-      padding: 2.5rem 1rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
@@ -481,7 +49,7 @@
           <a class="btn btn-secondary" href="https://github.com/Ardvino" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
-      <img src="profile.png" alt="Arvin Björkgren" class="profile-img" />
+      <img src="media/profile.png" alt="Arvin Björkgren" class="profile-img" />
     </div>
   </div>
 </section>
@@ -538,7 +106,7 @@
      ============================================================ -->
 <section id="projects">
   <div class="container">
-    <p class="section-label">Projects</p>
+    <p class="section-label">Research projects</p>
     <div class="projects-list">
 
       <!-- PROJECT 1 -->
@@ -559,26 +127,8 @@
         </div>
       </div>
 
-      <!-- PROJECT 2 -->
-      <div class="project-card">
-        <div class="project-header">
-          <span class="project-title">Pre-diagnostic Biomarker Signatures — PREDICT Cohort</span>
-          <span class="project-status status-ongoing">Ongoing</span>
-        </div>
-        <p class="project-desc">
-          Analysing blood samples collected years before a cancer diagnosis to identify
-          early warning signals for pancreatic cancer, using a large population-based biobank.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Proteomics</span>
-          <span class="tag">Metabolomics</span>
-          <span class="tag">Early Detection</span>
-          <span class="tag">Population Cohort</span>
-        </div>
-      </div>
-
       <!-- PROJECT 3 -->
-      <div class="project-card">
+      <a href="survival.html" class="project-card">
         <div class="project-header">
           <span class="project-title">Tumour Markers and Survival After Chemotherapy</span>
           <span class="project-status status-ongoing">Ongoing</span>
@@ -592,6 +142,24 @@
           <span class="tag">Survival Analysis</span>
           <span class="tag">Immunohistochemistry</span>
           <span class="tag">Prognostics</span>
+        </div>
+      </a>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-title">Pre-diagnostic Biomarker Signatures — PREDICT Cohort</span>
+          <span class="project-status status-planned">Planned</span>
+        </div>
+        <p class="project-desc">
+          Analysing blood samples collected years before a cancer diagnosis to identify
+          early warning signals for pancreatic cancer, using a large population-based biobank.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Proteomics</span>
+          <span class="tag">Metabolomics</span>
+          <span class="tag">Early Detection</span>
+          <span class="tag">Population Cohort</span>
         </div>
       </div>
 
