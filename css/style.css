@@ -428,13 +428,13 @@ nav {
 }
 
 /* ============================================================
-   DASHBOARD (stat cards, plot placeholder, results table)
+   RESULTS  (stat cards, plot/table placeholders, cohort tabs)
    ============================================================ */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
 }
 
 .stat-card {
@@ -442,6 +442,7 @@ nav {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 1.1rem 1.25rem;
+  text-align: center;
 }
 
 .stat-value {
@@ -462,15 +463,20 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  min-height: 320px;
+  gap: 0.4rem;
+  min-height: 260px;
   background: var(--white);
   border: 1px dashed var(--border);
   border-radius: 10px;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+.plot-placeholder.plot-placeholder-sm {
+  min-height: 160px;
+  font-size: 0.78rem;
 }
 
 .plot-placeholder strong {
@@ -480,10 +486,21 @@ nav {
   font-size: 0.95rem;
 }
 
+.plot-placeholder.plot-placeholder-sm strong {
+  font-size: 0.85rem;
+}
+
+.plot-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .results-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   font-size: 0.85rem;
 }
 
@@ -508,6 +525,99 @@ nav {
 
 .results-table td.muted {
   color: var(--text-muted);
+}
+
+.cohort-subheading {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--text);
+  margin: 2rem 0 0.25rem;
+}
+
+.cohort-caption {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+/* CSS-only tabs: hidden radio inputs + labels using the sibling combinator,
+   so switching tabs needs no JavaScript, matching the rest of the site. */
+.tabs input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Biomarker selector: pill buttons, independent of the cohort tabs below.
+   Which of the 6 (biomarker x cohort) panels shows is a compound check on
+   both radio groups — see the panel-visibility rules at the bottom. */
+.bm-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.bm-nav label {
+  cursor: pointer;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.bm-nav label:hover {
+  color: var(--text);
+}
+
+#bm-vff:checked ~ .bm-nav label[for="bm-vff"],
+#bm-col4:checked ~ .bm-nav label[for="bm-col4"],
+#bm-sff:checked ~ .bm-nav label[for="bm-sff"] {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.tabs-nav {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.tabs-nav label {
+  cursor: pointer;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tabs-nav label:hover {
+  color: var(--text);
+}
+
+.tab-panel {
+  display: none;
+}
+
+#tab-neo:checked ~ .tabs-nav label[for="tab-neo"],
+#tab-upfront:checked ~ .tabs-nav label[for="tab-upfront"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+#bm-vff:checked ~ #tab-neo:checked ~ .tab-content #panel-vff-neo,
+#bm-vff:checked ~ #tab-upfront:checked ~ .tab-content #panel-vff-upfront,
+#bm-col4:checked ~ #tab-neo:checked ~ .tab-content #panel-col4-neo,
+#bm-col4:checked ~ #tab-upfront:checked ~ .tab-content #panel-col4-upfront,
+#bm-sff:checked ~ #tab-neo:checked ~ .tab-content #panel-sff-neo,
+#bm-sff:checked ~ #tab-upfront:checked ~ .tab-content #panel-sff-upfront {
+  display: block;
 }
 
 /* ============================================================
