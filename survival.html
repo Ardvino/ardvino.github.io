@@ -97,16 +97,15 @@
         <div class="tab-panel" id="panel-vff-neo">
 
           <div class="stats-grid">
-            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Patients (n)</div></div>
-            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Median survival</div></div>
-            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">CD44-VFF-high rate</div></div>
-            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Log-rank p-value</div></div>
+            <div class="stat-card"><div class="stat-value">114</div><div class="stat-label">Patients (n)</div></div>
+            <div class="stat-card"><div class="stat-value">15.2 mo</div><div class="stat-label">Median survival</div></div>
+            <div class="stat-card"><div class="stat-value">76%</div><div class="stat-label">CD44-VFF-high rate</div></div>
+            <div class="stat-card"><div class="stat-value">0.715</div><div class="stat-label">Log-rank p-value</div></div>
           </div>
 
           <p class="cohort-subheading">Kaplan-Meier survival</p>
-          <div class="plot-placeholder">
-            <strong>CD44-VFF expression and survival</strong>
-            <span>High vs. low expression, neoadjuvant cohort</span>
+          <div class="plot-figure">
+            <img src="media/cd44-vff/kaplan_meier_neo.svg" alt="Kaplan-Meier curves: CD44-VFF High (n=87) vs. Low (n=27) expression and survival, neoadjuvant cohort, log-rank p=0.715" />
           </div>
 
           <p class="cohort-subheading">CD44-VFF balance across clinical variables (chi-square)</p>
@@ -118,11 +117,11 @@
           <table class="results-table">
             <thead><tr><th>Variable</th><th>p-value</th></tr></thead>
             <tbody>
-              <tr><td class="muted">Disease stage</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Histological grade</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Sex</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Chemotherapy regimen</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Treatment response</td><td class="muted">—</td></tr>
+              <tr><td>Disease stage</td><td>0.612</td></tr>
+              <tr><td>Histological grade</td><td>0.764</td></tr>
+              <tr><td>Sex</td><td>0.614</td></tr>
+              <tr><td>Chemotherapy regimen</td><td>0.485</td></tr>
+              <tr><td>Treatment response</td><td>1.000</td></tr>
             </tbody>
           </table>
 
@@ -131,14 +130,14 @@
           <table class="results-table">
             <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
             <tbody>
-              <tr><td class="muted">CD44-VFF (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Chemotherapy regimen</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Treatment response</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td>CD44-VFF (High vs. Low)</td><td>1.10</td><td>0.66–1.81</td><td>0.716</td></tr>
+              <tr><td>Treatment response (Weak vs. Strong)</td><td>2.14</td><td>1.07–4.28</td><td class="sig">0.031</td></tr>
+              <tr><td>Age at surgery</td><td>1.03</td><td>1.00–1.06</td><td class="sig">0.030</td></tr>
+              <tr><td>Sex (Male vs. Female)</td><td>0.93</td><td>0.60–1.43</td><td>0.742</td></tr>
+              <tr><td>Disease stage (Advanced vs. Early)</td><td>1.36</td><td>0.88–2.11</td><td>0.167</td></tr>
+              <tr><td>Grade 2 vs. 1</td><td>1.02</td><td>0.53–1.94</td><td>0.959</td></tr>
+              <tr><td>Grade 3 vs. 1</td><td>1.02</td><td>0.45–2.27</td><td>0.968</td></tr>
+              <tr><td>Log CA 19-9 (pre-operative)</td><td>1.73</td><td>1.37–2.19</td><td class="sig">&lt;0.001</td></tr>
             </tbody>
           </table>
 
@@ -147,32 +146,30 @@
           <table class="results-table">
             <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
             <tbody>
-              <tr><td class="muted">CD44-VFF (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Chemotherapy regimen</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
-              <tr><td class="muted">Treatment response</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td>CD44-VFF (High vs. Low)</td><td>1.60</td><td>0.86–2.98</td><td>0.142</td></tr>
+              <tr><td>Age at surgery</td><td>1.02</td><td>0.99–1.05</td><td>0.194</td></tr>
+              <tr><td>Sex (Male vs. Female)</td><td>0.94</td><td>0.55–1.60</td><td>0.805</td></tr>
+              <tr><td>Disease stage (Advanced vs. Early)</td><td>0.91</td><td>0.55–1.50</td><td>0.704</td></tr>
+              <tr><td>Grade 2 vs. 1</td><td>1.24</td><td>0.58–2.63</td><td>0.584</td></tr>
+              <tr><td>Grade 3 vs. 1</td><td>2.16</td><td>0.85–5.50</td><td>0.107</td></tr>
+              <tr><td>Log CA 19-9 (pre-operative)</td><td>1.89</td><td>1.47–2.44</td><td class="sig">&lt;0.001</td></tr>
             </tbody>
           </table>
-          <div class="plot-placeholder">
-            <strong>Adjusted hazard ratios</strong>
-            <span>Forest plot, multivariable model</span>
+          <br>
+          <div class="plot-figure">
+            <img src="media/cd44-vff/forest_plot_neo.svg" alt="Forest plot of adjusted hazard ratios, multivariable Cox model, neoadjuvant cohort" />
           </div>
 
           <p class="cohort-subheading">Subgroup analysis by treatment response</p>
-          <div class="plot-row">
-            <div class="plot-placeholder plot-placeholder-sm"><strong>All patients</strong></div>
-            <div class="plot-placeholder plot-placeholder-sm"><strong>Strong responders</strong></div>
-            <div class="plot-placeholder plot-placeholder-sm"><strong>Weak responders</strong></div>
+          <p class="cohort-caption">CD44-VFF High vs. Low, stratified by treatment response (log-rank p = 0.715 all patients, 0.850 strong responders, 0.505 weak responders).</p>
+          <br><div class="plot-figure">
+            <img src="media/cd44-vff/subgroup_response_neo.svg" alt="Kaplan-Meier subgroup analysis of CD44-VFF by treatment response: all patients, strong responders, weak responders" />
           </div>
 
           <p class="cohort-subheading">Treatment response by chemotherapy regimen</p>
-          <div class="plot-row">
-            <div class="plot-placeholder plot-placeholder-sm"><strong>Gemcitabine</strong></div>
-            <div class="plot-placeholder plot-placeholder-sm"><strong>FOLFIRINOX</strong></div>
+          <p class="cohort-caption">CD44-VFF High vs. Low within each regimen (log-rank p = 0.023 Gemcitabine, 0.492 FOLFIRINOX).</p>
+          <br><div class="plot-figure">
+            <img src="media/cd44-vff/subgroup_regimen_neo.svg" alt="Kaplan-Meier subgroup analysis of CD44-VFF by chemotherapy regimen: Gemcitabine and FOLFIRINOX" />
           </div>
         </div>
 
