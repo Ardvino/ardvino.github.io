@@ -12,7 +12,7 @@
   --bg:           #0d1117;
   --white:        #161b22;   /* card background */
   --font:         'Plus Jakarta Sans', system-ui, sans-serif;
-  --max-w:        740px;
+  --max-w:        1000px;      /* max width of content */
 }
 
 /* ============================================================
