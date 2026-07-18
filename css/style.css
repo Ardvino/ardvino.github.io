@@ -4,13 +4,13 @@
 
 /* Colors & fonts — change these to restyle the whole site */
 :root {
-  --accent:       #60a5fa;   /* cool blue */
-  --accent-light: #1e2d45;   /* dark blue tint */
-  --text:         #e6edf3;
-  --text-muted:   #8b949e;
-  --border:       #21262d;
-  --bg:           #0d1117;
-  --white:        #161b22;   /* card background */
+  --accent:       #2563eb;   /* blue highlight */
+  --accent-light: #dbeafe;   /* light blue tint */
+  --text:         #1f2937;
+  --text-muted:   #6b7280;
+  --border:       #e5e7eb;
+  --bg:           #ffffff;
+  --white:        #f8fafc;   /* card background */
   --font:         'Plus Jakarta Sans', system-ui, sans-serif;
   --max-w:        1000px;      /* max width of content */
 }
@@ -64,7 +64,7 @@ section:last-child { border-bottom: none; }
 nav {
   position: sticky;
   top: 0;
-  background: rgba(13, 17, 23, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
   z-index: 100;
@@ -120,7 +120,7 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(13, 17, 23, 0.78);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .hero .container {
@@ -141,10 +141,10 @@ nav {
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-  border: 3px solid rgba(96, 165, 250, 0.45);
+  border: 3px solid rgba(37, 99, 235, 0.35);
   box-shadow:
-    0 0 0 7px rgba(96, 165, 250, 0.08),
-    0 16px 40px rgba(0, 0, 0, 0.55);
+    0 0 0 7px rgba(37, 99, 235, 0.08),
+    0 16px 40px rgba(15, 23, 42, 0.18);
 }
 
 @media (max-width: 560px) {
@@ -166,20 +166,12 @@ nav {
   font-weight: 600;
   line-height: 1.15;
   color: var(--text);
-  margin-bottom: 0.4rem;
+  margin-bottom: 1.75rem;
 }
 
 .hero h1 em {
   font-style: italic;
   color: var(--accent);
-}
-
-.hero-attr {
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  letter-spacing: 0.07em;
-  margin-bottom: 1.75rem;
 }
 
 .hero-bio {
@@ -213,7 +205,7 @@ nav {
   background: var(--accent);
   color: #fff;
 }
-.btn-primary:hover { background: #3b82f6; text-decoration: none; color: #fff; }
+.btn-primary:hover { background: #1d4ed8; text-decoration: none; color: #fff; }
 
 .btn-secondary {
   background: transparent;
@@ -257,7 +249,7 @@ nav {
 }
 
 .project-card {
-  background: var(--bg);
+  background: var(--white);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 1.4rem 1.5rem;
@@ -272,7 +264,7 @@ nav {
 
 .project-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 12px rgba(96, 165, 250, 0.1);
+  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.1);
 }
 
 .project-header {
@@ -299,9 +291,9 @@ nav {
   flex-shrink: 0;
 }
 
-.status-ongoing  { background: #0d2818; color: #4ade80; }
-.status-complete { background: #1c1c1c; color: #9ca3af; }
-.status-planned  { background: #2a1f0a; color: #fbbf24; }
+.status-ongoing  { background: #dcfce7; color: #16a34a; }
+.status-complete { background: #f3f4f6; color: #6b7280; }
+.status-planned  { background: #fef3c7; color: #b45309; }
 
 .project-desc {
   font-size: 0.88rem;
