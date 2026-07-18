@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arvin Björkgren</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     NAV  — edit links to match your sections
+     ============================================================ -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Arvin Björkgren</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Back to home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO  — project title and summary
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Research Project · <span class="project-status status-ongoing">Ongoing</span></p>
+        <h1><em>COL4 and CD44</em> as predictive and prognostic biomarkers for PDAC</h1>
+        <p class="hero-attr">Digital Pathology · Survival Analysis</p>
+        <p class="hero-bio">
+          Investigating whether the expression of specific proteins in pancreatic
+          tumour tissue can predict survival in patients who received chemotherapy
+          before surgery, using immunohistochemistry-scored tissue samples.
+        </p>
+        <div class="project-tags" style="margin-bottom: 2rem;">
+          <span class="tag">Digital Pathology</span>
+          <span class="tag">Survival Analysis</span>
+          <span class="tag">Immunohistochemistry</span>
+          <span class="tag">Prognostics</span>
+        </div>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="https://github.com/Ardvino/Tumour-Markers-and-Survival-After-Chemotherapy" target="_blank">View on GitHub
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+          <a class="btn btn-secondary" href="index.html">Back to home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESULTS  — mirrors the tabs/sections of the Streamlit app,
+     hard-coded here so it renders instantly with no embed. Swap the
+     "—" placeholders for real figures once the study is done, or
+     replace a .plot-placeholder with an <img> of the exported plot.
+     ============================================================ -->
+<section id="results">
+  <div class="container">
+    <p class="section-label">Results</p>
+    <p style="font-size:0.9rem; color:var(--text-muted); max-width:620px;">
+      Figures below are placeholders and will be replaced once the cohort
+      is finalised. Try the full interactive version —
+      <a href="https://tumour-markers.streamlit.app/" target="_blank" rel="noopener">tumour-markers.streamlit.app ↗</a>
+    <br><br></p>
+
+    <div class="tabs">
+      <input type="radio" name="biomarker" id="bm-vff" checked>
+      <input type="radio" name="biomarker" id="bm-col4">
+      <input type="radio" name="biomarker" id="bm-sff">
+      <input type="radio" name="cohort-tabs" id="tab-neo" checked>
+      <input type="radio" name="cohort-tabs" id="tab-upfront">
+
+      <div class="bm-nav">
+        <label for="bm-col4">COL-4</label>
+        <label for="bm-vff">CD44-VFF</label>
+        <label for="bm-sff">CD44-SFF</label>
+      </div>
+
+      <div class="tabs-nav">
+        <label for="tab-neo">Neoadjuvant treatment</label>
+        <label for="tab-upfront">Upfront surgery</label>
+      </div>
+
+      <div class="tab-content">
+        <!-- ============ CD44-VFF — NEOADJUVANT ============ -->
+        <div class="tab-panel" id="panel-vff-neo">
+
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-value">114</div><div class="stat-label">Patients (n)</div></div>
+            <div class="stat-card"><div class="stat-value">15.2 mo</div><div class="stat-label">Median survival</div></div>
+            <div class="stat-card"><div class="stat-value">76%</div><div class="stat-label">CD44-VFF-high rate</div></div>
+            <div class="stat-card"><div class="stat-value">0.715</div><div class="stat-label">Log-rank p-value</div></div>
+          </div>
+
+          <p class="cohort-subheading">Kaplan-Meier survival</p>
+          <div class="plot-figure">
+            <img src="media/cd44-vff/kaplan_meier_neo.svg" alt="Kaplan-Meier curves: CD44-VFF High (n=87) vs. Low (n=27) expression and survival, neoadjuvant cohort, log-rank p=0.715" />
+          </div>
+
+          <p class="cohort-subheading">CD44-VFF balance across clinical variables (chi-square)</p>
+          <p class="cohort-caption">
+            Tests whether the High/Low CD44-VFF groups are evenly distributed across each
+            clinical variable. p &lt; 0.05 suggests the groups differ on that variable, which is
+            worth accounting for in the multivariable model below.
+          </p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td>Disease stage</td><td>0.612</td></tr>
+              <tr><td>Histological grade</td><td>0.764</td></tr>
+              <tr><td>Sex</td><td>0.614</td></tr>
+              <tr><td>Chemotherapy regimen</td><td>0.485</td></tr>
+              <tr><td>Treatment response</td><td>1.000</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Univariable Cox proportional hazards</p>
+          <p class="cohort-caption">Each variable tested in its own model, one at a time, without adjusting for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td>CD44-VFF (High vs. Low)</td><td>1.10</td><td>0.66–1.81</td><td>0.716</td></tr>
+              <tr><td>Treatment response (Weak vs. Strong)</td><td>2.14</td><td>1.07–4.28</td><td class="sig">0.031</td></tr>
+              <tr><td>Age at surgery</td><td>1.03</td><td>1.00–1.06</td><td class="sig">0.030</td></tr>
+              <tr><td>Sex (Male vs. Female)</td><td>0.93</td><td>0.60–1.43</td><td>0.742</td></tr>
+              <tr><td>Disease stage (Advanced vs. Early)</td><td>1.36</td><td>0.88–2.11</td><td>0.167</td></tr>
+              <tr><td>Grade 2 vs. 1</td><td>1.02</td><td>0.53–1.94</td><td>0.959</td></tr>
+              <tr><td>Grade 3 vs. 1</td><td>1.02</td><td>0.45–2.27</td><td>0.968</td></tr>
+              <tr><td>Log CA 19-9 (pre-operative)</td><td>1.73</td><td>1.37–2.19</td><td class="sig">&lt;0.001</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Multivariable Cox proportional hazards</p>
+          <p class="cohort-caption">All variables entered together, so the biomarker's hazard ratio is adjusted for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td>CD44-VFF (High vs. Low)</td><td>1.60</td><td>0.86–2.98</td><td>0.142</td></tr>
+              <tr><td>Age at surgery</td><td>1.02</td><td>0.99–1.05</td><td>0.194</td></tr>
+              <tr><td>Sex (Male vs. Female)</td><td>0.94</td><td>0.55–1.60</td><td>0.805</td></tr>
+              <tr><td>Disease stage (Advanced vs. Early)</td><td>0.91</td><td>0.55–1.50</td><td>0.704</td></tr>
+              <tr><td>Grade 2 vs. 1</td><td>1.24</td><td>0.58–2.63</td><td>0.584</td></tr>
+              <tr><td>Grade 3 vs. 1</td><td>2.16</td><td>0.85–5.50</td><td>0.107</td></tr>
+              <tr><td>Log CA 19-9 (pre-operative)</td><td>1.89</td><td>1.47–2.44</td><td class="sig">&lt;0.001</td></tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="plot-figure">
+            <img src="media/cd44-vff/forest_plot_neo.svg" alt="Forest plot of adjusted hazard ratios, multivariable Cox model, neoadjuvant cohort" />
+          </div>
+
+          <p class="cohort-subheading">Subgroup analysis by treatment response</p>
+          <p class="cohort-caption">CD44-VFF High vs. Low, stratified by treatment response (log-rank p = 0.715 all patients, 0.850 strong responders, 0.505 weak responders).</p>
+          <br><div class="plot-figure">
+            <img src="media/cd44-vff/subgroup_response_neo.svg" alt="Kaplan-Meier subgroup analysis of CD44-VFF by treatment response: all patients, strong responders, weak responders" />
+          </div>
+
+          <p class="cohort-subheading">Treatment response by chemotherapy regimen</p>
+          <p class="cohort-caption">CD44-VFF High vs. Low within each regimen (log-rank p = 0.023 Gemcitabine, 0.492 FOLFIRINOX).</p>
+          <br><div class="plot-figure">
+            <img src="media/cd44-vff/subgroup_regimen_neo.svg" alt="Kaplan-Meier subgroup analysis of CD44-VFF by chemotherapy regimen: Gemcitabine and FOLFIRINOX" />
+          </div>
+        </div>
+
+        <!-- ============ CD44-VFF — UPFRONT SURGERY ============ -->
+        <div class="tab-panel" id="panel-vff-upfront">
+
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Patients (n)</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Median survival</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">CD44-VFF-high rate</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Log-rank p-value</div></div>
+          </div>
+
+          <p class="cohort-subheading">Kaplan-Meier survival</p>
+          <div class="plot-placeholder">
+            <strong>CD44-VFF expression and survival</strong>
+            <span>High vs. low expression, upfront surgery cohort</span>
+          </div>
+
+          <p class="cohort-subheading">CD44-VFF balance across clinical variables (chi-square)</p>
+          <p class="cohort-caption">
+            Tests whether the High/Low CD44-VFF groups are evenly distributed across each
+            clinical variable. p &lt; 0.05 suggests the groups differ on that variable, which is
+            worth accounting for in the multivariable model below.
+          </p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Univariable Cox proportional hazards</p>
+          <p class="cohort-caption">Each variable tested in its own model, one at a time, without adjusting for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">CD44-VFF (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Multivariable Cox proportional hazards</p>
+          <p class="cohort-caption">All variables entered together, so the biomarker's hazard ratio is adjusted for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">CD44-VFF (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+          <div class="plot-placeholder">
+            <strong>Adjusted hazard ratios</strong>
+            <span>Forest plot, multivariable model</span>
+          </div>
+        </div>
+        <!-- ============ COL-4 — NEOADJUVANT ============ -->
+        <div class="tab-panel" id="panel-col4-neo">
+
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Patients (n)</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Median survival</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">COL-4-high rate</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Log-rank p-value</div></div>
+          </div>
+
+          <p class="cohort-subheading">Kaplan-Meier survival</p>
+          <div class="plot-placeholder">
+            <strong>COL-4 expression and survival</strong>
+            <span>High vs. low expression, neoadjuvant cohort</span>
+          </div>
+
+          <p class="cohort-subheading">COL-4 balance across clinical variables (chi-square)</p>
+          <p class="cohort-caption">
+            Tests whether the High/Low COL-4 groups are evenly distributed across each
+            clinical variable. p &lt; 0.05 suggests the groups differ on that variable, which is
+            worth accounting for in the multivariable model below.
+          </p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Chemotherapy regimen</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Treatment response</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Univariable Cox proportional hazards</p>
+          <p class="cohort-caption">Each variable tested in its own model, one at a time, without adjusting for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">COL-4 (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Chemotherapy regimen</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Treatment response</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Multivariable Cox proportional hazards</p>
+          <p class="cohort-caption">All variables entered together, so the biomarker's hazard ratio is adjusted for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">COL-4 (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Chemotherapy regimen</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Treatment response</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+          <div class="plot-placeholder">
+            <strong>Adjusted hazard ratios</strong>
+            <span>Forest plot, multivariable model</span>
+          </div>
+
+          <p class="cohort-subheading">Subgroup analysis by treatment response</p>
+          <div class="plot-row">
+            <div class="plot-placeholder plot-placeholder-sm"><strong>All patients</strong></div>
+            <div class="plot-placeholder plot-placeholder-sm"><strong>Strong responders</strong></div>
+            <div class="plot-placeholder plot-placeholder-sm"><strong>Weak responders</strong></div>
+          </div>
+
+          <p class="cohort-subheading">Treatment response by chemotherapy regimen</p>
+          <div class="plot-row">
+            <div class="plot-placeholder plot-placeholder-sm"><strong>Gemcitabine</strong></div>
+            <div class="plot-placeholder plot-placeholder-sm"><strong>FOLFIRINOX</strong></div>
+          </div>
+        </div>
+
+        <!-- ============ COL-4 — UPFRONT SURGERY ============ -->
+        <div class="tab-panel" id="panel-col4-upfront">
+
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Patients (n)</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Median survival</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">COL-4-high rate</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Log-rank p-value</div></div>
+          </div>
+
+          <p class="cohort-subheading">Kaplan-Meier survival</p>
+          <div class="plot-placeholder">
+            <strong>COL-4 expression and survival</strong>
+            <span>High vs. low expression, upfront surgery cohort</span>
+          </div>
+
+          <p class="cohort-subheading">COL-4 balance across clinical variables (chi-square)</p>
+          <p class="cohort-caption">
+            Tests whether the High/Low COL-4 groups are evenly distributed across each
+            clinical variable. p &lt; 0.05 suggests the groups differ on that variable, which is
+            worth accounting for in the multivariable model below.
+          </p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Univariable Cox proportional hazards</p>
+          <p class="cohort-caption">Each variable tested in its own model, one at a time, without adjusting for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">COL-4 (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Multivariable Cox proportional hazards</p>
+          <p class="cohort-caption">All variables entered together, so the biomarker's hazard ratio is adjusted for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">COL-4 (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+          <div class="plot-placeholder">
+            <strong>Adjusted hazard ratios</strong>
+            <span>Forest plot, multivariable model</span>
+          </div>
+        </div>
+        <!-- ============ CD44-SFF — NEOADJUVANT ============ -->
+        <div class="tab-panel" id="panel-sff-neo">
+
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Patients (n)</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Median survival</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">CD44-SFF-high rate</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Log-rank p-value</div></div>
+          </div>
+
+          <p class="cohort-subheading">Kaplan-Meier survival</p>
+          <div class="plot-placeholder">
+            <strong>CD44-SFF expression and survival</strong>
+            <span>High vs. low expression, neoadjuvant cohort</span>
+          </div>
+
+          <p class="cohort-subheading">CD44-SFF balance across clinical variables (chi-square)</p>
+          <p class="cohort-caption">
+            Tests whether the High/Low CD44-SFF groups are evenly distributed across each
+            clinical variable. p &lt; 0.05 suggests the groups differ on that variable, which is
+            worth accounting for in the multivariable model below.
+          </p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Chemotherapy regimen</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Treatment response</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Univariable Cox proportional hazards</p>
+          <p class="cohort-caption">Each variable tested in its own model, one at a time, without adjusting for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">CD44-SFF (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Chemotherapy regimen</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Treatment response</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Multivariable Cox proportional hazards</p>
+          <p class="cohort-caption">All variables entered together, so the biomarker's hazard ratio is adjusted for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">CD44-SFF (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Chemotherapy regimen</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Treatment response</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+          <div class="plot-placeholder">
+            <strong>Adjusted hazard ratios</strong>
+            <span>Forest plot, multivariable model</span>
+          </div>
+
+          <p class="cohort-subheading">Subgroup analysis by treatment response</p>
+          <div class="plot-row">
+            <div class="plot-placeholder plot-placeholder-sm"><strong>All patients</strong></div>
+            <div class="plot-placeholder plot-placeholder-sm"><strong>Strong responders</strong></div>
+            <div class="plot-placeholder plot-placeholder-sm"><strong>Weak responders</strong></div>
+          </div>
+
+          <p class="cohort-subheading">Treatment response by chemotherapy regimen</p>
+          <div class="plot-row">
+            <div class="plot-placeholder plot-placeholder-sm"><strong>Gemcitabine</strong></div>
+            <div class="plot-placeholder plot-placeholder-sm"><strong>FOLFIRINOX</strong></div>
+          </div>
+        </div>
+
+        <!-- ============ CD44-SFF — UPFRONT SURGERY ============ -->
+        <div class="tab-panel" id="panel-sff-upfront">
+
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Patients (n)</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Median survival</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">CD44-SFF-high rate</div></div>
+            <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">Log-rank p-value</div></div>
+          </div>
+
+          <p class="cohort-subheading">Kaplan-Meier survival</p>
+          <div class="plot-placeholder">
+            <strong>CD44-SFF expression and survival</strong>
+            <span>High vs. low expression, upfront surgery cohort</span>
+          </div>
+
+          <p class="cohort-subheading">CD44-SFF balance across clinical variables (chi-square)</p>
+          <p class="cohort-caption">
+            Tests whether the High/Low CD44-SFF groups are evenly distributed across each
+            clinical variable. p &lt; 0.05 suggests the groups differ on that variable, which is
+            worth accounting for in the multivariable model below.
+          </p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Univariable Cox proportional hazards</p>
+          <p class="cohort-caption">Each variable tested in its own model, one at a time, without adjusting for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">CD44-SFF (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+
+          <p class="cohort-subheading">Multivariable Cox proportional hazards</p>
+          <p class="cohort-caption">All variables entered together, so the biomarker's hazard ratio is adjusted for the others.</p>
+          <table class="results-table">
+            <thead><tr><th>Variable</th><th>Hazard ratio</th><th>95% CI</th><th>p-value</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">CD44-SFF (High vs. Low)</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Disease stage</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Histological grade</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Sex</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Age</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+              <tr><td class="muted">Log CA 19-9</td><td class="muted">—</td><td class="muted">—</td><td class="muted">—</td></tr>
+            </tbody>
+          </table>
+          <div class="plot-placeholder">
+            <strong>Adjusted hazard ratios</strong>
+            <span>Forest plot, multivariable model</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     METHODOLOGY
+     ============================================================ -->
+<section id="methodology">
+  <div class="container">
+    <p class="section-label">Methodology</p>
+    <div class="about-grid">
+      <div class="about-block">
+        <h3>Data</h3>
+        <p>
+          Pancreatic tumour tissue samples from patients who received
+          chemotherapy before surgery, scored for protein expression by
+          immunohistochemistry alongside clinical follow-up and survival data.
+        </p>
+      </div>
+      <div class="about-block">
+        <h3>Modelling</h3>
+        <p>
+          Kaplan-Meier estimation with log-rank testing between high- and
+          low-expression groups, a chi-square balance check against clinical
+          variables, and univariable/multivariable Cox proportional hazards
+          regression with a hazard-ratio forest plot. Subgroup analysis by
+          treatment response and chemotherapy regimen for the neoadjuvant
+          cohort.
+        </p>
+      </div>
+      <div class="about-block">
+        <h3>Tools</h3>
+        <p>
+          Digital pathology software for IHC scoring, with statistical
+          analysis in Python (lifelines, pandas), deployed as an interactive
+          Streamlit app, aimed at a peer-reviewed publication.
+        </p>
+      </div>
+      <div class="about-block">
+        <h3>Status</h3>
+        <p>
+          Ongoing — this page will be updated with figures and results as
+          IHC scoring and survival analysis are completed.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Arvin Björkgren · Umeå, Sweden · <a href="#top">Back to top</a></p>
+</footer>
+
+</body>
+</html>

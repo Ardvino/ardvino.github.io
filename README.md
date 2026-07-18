@@ -1,4 +1,4 @@
-# Hanna Nilsson — Portfolio
+# Arvin Björkgren — Portfolio
 
 Personal portfolio website built as a single HTML file with no dependencies beyond Google Fonts.
 
@@ -6,13 +6,9 @@ Personal portfolio website built as a single HTML file with no dependencies beyo
 
 ```
 Portfolio/
-├── index.html              # Entire site — markup and content
-├── css/style.css           # Styles (light theme)
-├── media/
-│   ├── profile.jpg         # Profile photo (hero section)
-│   └── background.jpg      # Hero background image
-├── documentation/
-│   └── resume.pdf          # Downloadable CV, linked from the hero
+├── index.html       # Entire site — markup, styles, and content
+├── profile.png      # Profile photo (hero section)
+├── background.jpg   # Hero background image
 └── README.md
 ```
 
@@ -22,10 +18,10 @@ All personal content is in `index.html`. The sections follow this order:
 
 | Section | What to edit |
 |---|---|
-| **Hero** | Tagline, headline, bio (`hero-eyebrow`, `h1`, `hero-bio`) |
-| **About** | Background, research, teaching, location (`about-block`) |
+| **Hero** | Tagline, quote, bio (`hero-eyebrow`, `h1`, `hero-attr`, `hero-bio`) |
+| **About** | Background, research, interests, location (`about-block`) |
 | **Projects** | Add/edit `project-card` blocks |
-| **CV** | Education, experience (`cv-entry` blocks) |
+| **CV** | Education, research, clinical experience (`cv-entry` blocks) |
 | **Skills** | `skill-item` spans inside `skills-grid` |
 | **Contact** | Email and social links |
 
@@ -35,10 +31,10 @@ CSS variables at the top of `<style>` control the entire look:
 
 ```css
 :root {
-  --accent:       #2563eb;   /* blue highlight colour */
-  --bg:           #ffffff;   /* page background */
-  --text:         #1f2937;   /* primary text */
-  --text-muted:   #6b7280;   /* secondary text */
+  --accent:       #60a5fa;   /* blue highlight colour */
+  --bg:           #0d1117;   /* page background */
+  --text:         #e6edf3;   /* primary text */
+  --text-muted:   #8b949e;   /* secondary text */
   --font:         'Plus Jakarta Sans', system-ui, sans-serif;
 }
 ```
@@ -49,13 +45,6 @@ Open `index.html` directly in a browser, or use the **Live Server** extension in
 
 ## Deployment
 
-If hosted on GitHub Pages: commit changes and push to the `main` branch — the site
-updates automatically within a minute.
+Hosted on GitHub Pages at `https://ardvino.github.io`.
 
-## TODO
-
-- [ ] Add a dedicated research page for the Alzheimer's/fMRI project (figures, methods, poster)
-- [ ] Add a Publications/Presentations section once available
-- [ ] Double-check `profile.jpg` framing in the circular crop
-- [ ] Add a favicon
-- [ ] Decide on and wire up a real deploy target (GitHub Pages / custom domain)
+To update: commit changes and push to the `main` branch — the site updates automatically within a minute.
